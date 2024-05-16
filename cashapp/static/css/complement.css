@@ -1,0 +1,62 @@
+/* // $color_purple: #5133AB;
+// $color_red: #AC193D;
+// $color_orange: #DC572E;
+// $color_green: #00A600;
+// $color_blue: #2672EC; */
+
+.tile {  
+    width: 100%;
+      display: inline-block;
+      box-sizing: border-box;
+      background: #fff;		
+      padding: 20px;
+      margin-bottom: 30px;
+    
+    .title {
+          margin-top: 0px;
+      }
+    
+    &.purple, &.blue, &.red, &.orange, &.green {
+      color: #fff;
+    }
+    
+    &.purple {
+      background: purple;
+  
+          &:hover {
+              background: darken(purple, 10%);
+          }		
+    }
+    
+    &.red {
+      background: red;
+  
+          &:hover {
+              background: darken(red, 10%);
+          }		
+    }
+    
+    &.green {
+      background: green;
+  
+          &:hover {
+              background: darken(green, 10%);
+          }		
+    }
+    
+    &.blue {
+      background: blue;
+  
+          &:hover {
+              background: darken(blue, 10%);
+          }	
+    }
+    
+    &.orange {
+      background: orange;
+  
+          &:hover {
+              background: darken(orange, 10%);
+          }	
+    }
+  }

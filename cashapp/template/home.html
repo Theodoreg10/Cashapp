@@ -2,8 +2,40 @@
 {% load static %}
 {% block title %}Home{% endblock %}
 {% block carrousel %}{% endblock%}
+<section class="container row">
+        <section class="container col-md-2 sidebar">
+            <p>Hi</p>
+        </section>
+        <section class="container col-md-10 main-content">
 {% block content %}
-
+        <div class="row">
+            <div class="col-md-3">
+                <div class="tile green">
+                    <h4></h4>
+                    <h3></h3>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="tile red">
+                    <h4>Current Balance</h4>
+                    <h3></h3>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="tile">
+                    <h4>Expense</h4>
+                    <h3></h3>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="tile">
+                    <h4></h4>
+                    <h3></h3>
+                </div>
+            </div>
+        </div>
 {% endblock %}
+        </section>
+</section>
 {% block footer %}
 {% endblock %}
