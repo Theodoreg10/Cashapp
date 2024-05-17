@@ -1,10 +1,20 @@
 from django.shortcuts import render
+from .models import Account, AccountType
 
 # Create your views here.
 
 
 def handle_home_page(request):
-    return render(request, "home.html")
+    accounts = Account.objects.filter(account_type=AccountType.PERSONAL)
+    current_balance = 0
+    for account in accounts:
+        current_balance += account.balance
+    context = {
+        'accounts': accounts,
+        'current_balance': current_balance
+        }
+
+    return render(request, 'home.html', context)
 
 
 def handle_login_page(request):
