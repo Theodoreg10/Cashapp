@@ -3,7 +3,36 @@
 {% block title %}Category{% endblock %}
 {% block carrousel %}{% endblock%}
 {% block content %}
-
+<div class="box">
+    <div class="box-header">
+    <h3 class="box-title">Categories </h3>
+  </div>
+  <div class="box-body">
+  <table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Money spent</th>
+            <th>Money spent {{ today|date:"F" }}</th>
+            <th>Last modified</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for category in categorys %}
+        <tr>
+            <td>{{ category.name }}</td>
+            <td>{{ category.money_spent }}</td>
+            <td>{{ category.money_spent_this_month }}</td>
+            <td>{{ category.last_modified }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  <div class="box-footer">
+    <a class="btn btn-primary" href="category_new">Create Category</a>
+    <a class="btn btn-info" href="foreign_accounts">Foreign Accounts</a>
+  </div>
 {% endblock %}
 {% block footer %}
 {% endblock %}

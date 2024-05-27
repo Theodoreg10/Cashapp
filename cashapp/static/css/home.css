@@ -8,6 +8,11 @@
     text-align: center;
 }
 
+.container{
+    max-width: 99% !important;
+    padding: 1rem;
+}
+
 #reason-why img, #functionality img {
     width: 100%;
     height: 10rem;

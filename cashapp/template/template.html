@@ -211,10 +211,19 @@
     <!-- end slider section -->
   </div>
   <section class="container row">
-    <section class="container col-md-2 sidebar">
-        <p>Hi</p>
+    <section class="sidebar container col-md-3">
+      {% for advice in advices %}
+      <div class="card">
+        <p class="card-title code code-details">
+          {{advice.title}}
+        </p>
+        <p class="card-description">
+          {{advice.summary}}
+        </p>
+      </div>
+        {% endfor %}
     </section>
-    <section class="container col-md-10 main-content">
+    <section class="main-content container col-md-9">
 {% block content %}
     <p>Ok</p>
 {% endblock %}
@@ -243,6 +252,7 @@
   <!-- Google Map -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
   <!-- End Google Map -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   {% block scripts %}
   {% endblock %}
 

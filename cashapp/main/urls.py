@@ -12,4 +12,5 @@ urlpatterns = [
     path("account", views.handle_account_page, name="account"),
     path("category", views.handle_category_page, name="category"),
     path("report", views.handle_report_page, name="report"),
+    path('api_balance', views.get_balance_data, name='api_balance'),
     ]

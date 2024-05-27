@@ -157,15 +157,31 @@ class Account(models.Model):
             )['amount__sum'] or 0, 2
         )
 
+    def income_on(self, date):
+        return round(
+            Transaction.objects.filter(dst=self, date__lte=date).aggregate(
+                models.Sum('amount')
+            )['amount__sum'] or 0, 2
+        )
+
+    def expense_on(self, date):
+        return round(
+            Transaction.objects.filter(src=self, date__lte=date).aggregate(
+                models.Sum('amount')
+            )['amount__sum'] or 0, 2
+        )
+
     def get_absolute_url(self):
         return reverse('account_view', args=[self.pk])
 
     def get_data_points(self, dstart=date.today() - timedelta(days=365),
                         dend=date.today(), steps=30):
         data_points = []
+        labels = []
         step_size = (dend - dstart) / steps
         current_date = dstart
         while current_date <= dend:
+            labels.append(current_date)
             balance = self.balance_on(current_date)
             data_points.append((current_date, balance))
             current_date += step_size
@@ -202,6 +218,17 @@ class Category(models.Model):
             category=self).aggregate(
             models.Sum('amount'))['amount__sum'] or 0)
 
+    @property
+    def money_spent_this_month(self):
+        today = date.today()
+        first_day_of_month = today.replace(day=1)
+        return abs(Transaction.objects.filter(
+            transaction_type=Transaction.WITHDRAW,
+            category=self,
+            date__gte=first_day_of_month,
+            date__lte=today).aggregate(
+            models.Sum('amount'))['amount__sum'] or 0)
+
     def get_absolute_url(self):
         return reverse('category_detail', args=[self.id])
 
@@ -223,7 +250,7 @@ class Budget(models.Model):
         ordering = ['category']
 
     def __str__(self):
-        return self.name
+        return self.category.name
 
     @property
     def spent(self):
@@ -244,3 +271,12 @@ class Budget(models.Model):
 
     def get_absolute_url(self):
         return reverse('budget_detail', args=[self.id])
+
+
+class Advice(models.Model):
+    title = models.CharField(max_length=200)
+    summary = models.TextField()
+    text = models.TextField()
+
+    def __str__(self):
+        return self.title

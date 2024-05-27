@@ -2,13 +2,19 @@ from django.contrib import admin, messages
 from django.urls import reverse
 from django.utils.html import format_html
 from django.utils.translation import gettext as _
-from .models import Account, Category, Transaction, AccountType
+from .models import Account, Category, Transaction, AccountType, Advice, Budget
 
 
 # Register your models here.
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     search_fields = ['name']
+
+
+@admin.register(Budget)
+class BudgetAdmin(admin.ModelAdmin):
+    search_fields = ['category', 'month']
+    list_display = ['category', 'month', 'amount', 'last_modified']
 
 
 @admin.register(Account)
@@ -61,3 +67,9 @@ class TransactionAdmin(admin.ModelAdmin):
     list_display = ['title', 'src', 'dst', 'date', 'amount',
                     'transaction_type']
     search_fields = ['title', 'notes', 'splits__title']
+
+
+@admin.register(Advice)
+class AdviceAdmin(admin.ModelAdmin):
+    search_fields = ['title']
+    list_display = ['title', 'summary', 'text']

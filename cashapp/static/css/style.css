@@ -5,6 +5,7 @@ body {
   color: #0c0c0c;
   background-color: #ffffff;
   overflow-x: hidden;
+  margin: 10px;
 }
 
 .layout_padding {
@@ -846,3 +847,36 @@ a:focus {
   color: inherit;
 }
 /*# sourceMappingURL=style.css.map */
+
+.card{
+	border-radius: 10px;
+	background: white;
+	padding: 20px;
+	box-shadow: 4px 4px 12px 1px rgba(0, 0, 0, 0.2);
+	line-height: 1.5;}
+
+	.card-list{
+		display: flex;
+		flex: 1}
+	
+    .card-title{
+		margin: 0 0 20px 0;
+		letter-spacing: 1px;
+    border-left: 2px dashed #E4F0D0;
+		border-right: 2px dashed #E4F0D0;
+		line-height: 1.5;
+  font-size: larger;}
+	
+    .card-description{
+		margin: 0;
+    font-size: small;
+    text-align: justify;
+  }
+
+		.card-title{
+			color: #783F8E}
+	
+	
+.main-content{
+  padding-top: 2px;
+}

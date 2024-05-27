@@ -2,8 +2,51 @@
 {% load static %}
 {% block title %}Transaction{% endblock %}
 {% block carrousel %}{% endblock%}
+{% block styles %}
+<link href="{% static 'css/home.css' %}" rel="stylesheet" />
+{% endblock %}
 {% block content %}
-
+<div class="box">
+    <div class="box-header">
+    <h3 class="box-title">Transaction Details </h3>
+  </div>
+  <div class="box-body">
+  <table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Transaction Type</th>
+            <th>Source Account</th>
+            <th>Destination Account</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Last Modified</th>
+            <th>date</th>
+            <th>Recurrence</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for transaction in transactions %}
+        <tr>
+            <td>{{ transaction.title }}</td>
+            <td>{{ transaction.get_transaction_type_str }}</td>
+            <td>{{ transaction.src.name }}</td>
+            <td>{{ transaction.dst.name }}</td>
+            <td>{{ transaction.amount }}</td>
+            <td>{{ transaction.category.name }}</td>
+            <td>{{ transaction.last_modified }}</td>
+            <td>{{ transaction.date }}</td>
+            <td>{{ transaction.is_recurrence }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  <div class="box-footer">
+    <a class="btn btn-primary" href="transaction_new">Create Transaction</a>
+    <a class="btn btn-info" href="foreign_accounts">Foreign Accounts</a>
+  </div>
+</div>
 {% endblock %}
 
 {% block footer %}

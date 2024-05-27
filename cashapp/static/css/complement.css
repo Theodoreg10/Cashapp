@@ -3,17 +3,30 @@
 // $color_orange: #DC572E;
 // $color_green: #00A600;
 // $color_blue: #2672EC; */
+.col-md-3{
+  padding-left: 5px;
+  padding-right: 5px;
+}
 
+.table{
+  overflow-x: auto;
+}
+
+.table tr:hover{
+  background-color: #2993ea9d;
+}
 .tile {  
     width: 100%;
       display: inline-block;
+      height: 100%;
       box-sizing: border-box;
       background: #fff;		
-      padding: 20px;
-      margin-bottom: 30px;
+      padding: 10px;
+      margin-bottom: 2px;
     
     .title {
-          margin-top: 0px;
+          margin-top: 2px;
+          font-size: 1.5rem;
       }
     
     &.purple, &.blue, &.red, &.orange, &.green {
@@ -29,34 +42,34 @@
     }
     
     &.red {
-      background: red;
-  
+      background: rgba(255, 0, 0, 0.5);
+
           &:hover {
-              background: darken(red, 10%);
+              background:  rgba(255, 0, 0, 0.75);
           }		
     }
     
     &.green {
-      background: green;
+      background: rgba(0, 128, 0, 0.5);
   
           &:hover {
-              background: darken(green, 10%);
+              background: rgba(0, 128, 0, 0.75);
           }		
     }
     
     &.blue {
-      background: blue;
+      background: rgba(0, 0, 255, 0.5);
   
           &:hover {
-              background: darken(blue, 10%);
+              background: rgba(0, 0, 255, 0.75);
           }	
     }
     
     &.orange {
-      background: orange;
+      background: rgba(255, 166, 0, 0.5);
   
           &:hover {
-              background: darken(orange, 10%);
+              background: rgba(255, 166, 0, 0.75);
           }	
     }
   }
