@@ -31,6 +31,7 @@
   <link href="{% static 'css/complement.css' %}" rel="stylesheet" />
   <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
   <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/home.css' %}" rel="stylesheet" />
   {% block styles %}
   {% endblock %}
 
@@ -61,13 +62,13 @@
                 <a class="nav-link" href="{% url 'transaction' %}"> Transactions</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="budget">Budget</a>
+                <a class="nav-link" href="{% url 'budget' %}">Budget</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="account">Account</a>
+                <a class="nav-link" href="{% url 'account' %}">Account</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="category">Category</a>
+                <a class="nav-link" href="{% url 'category' %}">Category</a>
               </li>
             </ul>
           </div>
@@ -88,7 +89,7 @@
             {% else %}
             <a href="{% url 'login' %}">
               <span>
-                Se connecter
+                Log in
               </span>
               <i class="fa fa-user" aria-hidden="true"></i>
             </a>

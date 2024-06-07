@@ -146,6 +146,12 @@ class Account(models.Model):
     def balance(self):
         return self.balance_on(date.today())
 
+    def income(self, dstart, dend=date.today()):
+        return self.income_on(dend) - self.income_on(dstart)
+
+    def expense(self, dstart, dend=date.today()):
+        return self.expense_on(dend) - self.expense_on(dstart)
+
     def balance_on(self, date):
         return round(
             Transaction.objects.filter(dst=self, date__lte=date).aggregate(

@@ -1,3 +1,4 @@
+
 .file-upload{display:block;text-align:center;font-family: Helvetica, Arial, sans-serif;font-size: 12px;}
 .file-upload .file-select{display:block;border: 2px solid #dce4ec;color: #34495e;cursor:pointer;height:40px;line-height:40px;text-align:left;background:#FFFFFF;overflow:hidden;position:relative;}
 .file-upload .file-select .file-select-button{background:#dce4ec;padding:0 10px;display:inline-block;height:40px;line-height:40px;}
@@ -124,10 +125,10 @@
 
 .add-form textarea{min-height:120px}
 .datainput select{
-    padding:12px 0;
+    margin-left: 120px;
+    width: 70%;
     color:#555;
     font-size:14px;
-    width:100%;
     border:0;
     border-bottom:1px solid #ddd;
     outline:none;background:#fff}

@@ -2,7 +2,6 @@
 {% load static %}
 {% block title %}Home{% endblock %}
 {% block styles %}
-<link href="{% static 'css/home.css' %}" rel="stylesheet" />
 {% endblock %}
 <!-- {% block carrousel %}{% endblock%}
 <section class="container row">
@@ -20,20 +19,20 @@
             </div>
             <div class="col-md-3">
                 <div class="tile green">
-                    <p class="title">This month Balance</p>
-                    <h3>{{current_balance}}</h3>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="tile blue">
-                    <p class="title">Current Expense</p>
-                    <h3>{{current_balance}}</h3>
+                    <p class="title">This month income</p>
+                    <h3>{{current_month_income}}</h3>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="tile blue">
                     <p class="title">This month Expense</p>
-                    <h3>{{current_balance}}</h3>
+                    <h3>{{current_month_expense}}</h3>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="tile blue">
+                    <p class="title">Movement</p>
+                    <h3>{{movement}}</h3>
                 </div>
             </div>
         </div>
@@ -76,7 +75,42 @@
                     <canvas id="myChart" width="100%" style="min-height: 200;"></canvas>
                 </div>
             </div>
-
+        </div>
+        <div class="row">
+            
+            <div class="box">
+                <div class="box-content">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Transaction Type</th>
+                            <th>Source Account</th>
+                            <th>Destination Account</th>
+                            <th>Amount</th>
+                            <th>Category</th>
+                            <th>Last Modified</th>
+                            <th>date</th>
+                            <th>Recurrence</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for transaction in recent_transactions %}
+                        <tr>
+                            <td>{{ transaction.title }}</td>
+                            <td>{{ transaction.get_transaction_type_str }}</td>
+                            <td>{{ transaction.src.name }}</td>
+                            <td>{{ transaction.dst.name }}</td>
+                            <td>{{ transaction.amount }}</td>
+                            <td>{{ transaction.category.name }}</td>
+                            <td>{{ transaction.last_modified }}</td>
+                            <td>{{ transaction.date }}</td>
+                            <td>{{ transaction.is_recurrence }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                </div>
         </div>
 {% endblock %}
         </section>

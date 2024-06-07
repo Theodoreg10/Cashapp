@@ -1,0 +1,32 @@
+{% extends 'template.html' %}
+{% load static %}
+{% block title %}Login or register{% endblock %}
+{% block carrousel %}{% endblock%}
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="login">
+    <div class="form">
+        <form class="login-form" method="post">
+            {% csrf_token %}
+            {{ form.username.label_tag }}
+            {{ form.username }}
+            {{ form.password.label_tag }}
+            {{ form.password }}
+            <button type="submit">Sign in</button>
+            <p><a href="register">Register</a></p>
+        </form>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <p {% if message.tags %} class="{{ message.tags }}"{% endif %} style="color: crimson;">{{ message }}</p>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+{% block footer %}
+{% endblock %}
